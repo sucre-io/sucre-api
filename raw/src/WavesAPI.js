@@ -13,7 +13,6 @@ var request = require("./utils/request");
 var storage = require("./utils/storage");
 var NodeAPI = require("./api/node/index");
 var MatcherAPI = require("./api/matcher/index");
-var SucreAPI = require("./api/sucre/index");
 var constants = require("./constants");
 var config_1 = require("./config");
 var tools_1 = require("./tools");
@@ -39,9 +38,6 @@ var WavesAPI = /** @class */ (function () {
             },
             Matcher: {
                 v1: MatcherAPI.v1
-            },
-            Sucre: {
-                v1: SucreAPI.v1
             }
         };
         if (this instanceof WavesAPI) {

@@ -4,7 +4,7 @@ var request_1 = require("../../../utils/request");
 var fetch = request_1.createFetchWrapper(1 /* MATCHER */, 0 /* V1 */, request_1.processJSON);
 exports.default = {
     getMatcherKey: function () {
-        return fetch('/');
+        return fetch('/matcher/');
     }
 };
 //# sourceMappingURL=info.js.map

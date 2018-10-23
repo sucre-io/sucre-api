@@ -5,7 +5,6 @@ import Seed from './classes/Seed';
 import * as byteProcessors from './classes/ByteProcessor';
 import { INodeAPIv1, INodeAPIv2 } from './api/node/index';
 import { IMatcherAPIv1 } from './api/matcher/index';
-import { ISucreAPIv1 } from './api/sucre/index';
 export interface IAPIVersions {
     Node: {
         v1: INodeAPIv1;
@@ -13,9 +12,6 @@ export interface IAPIVersions {
     };
     Matcher: {
         v1: IMatcherAPIv1;
-    };
-    Sucre: {
-        v1: ISucreAPIv1;
     };
 }
 export interface IWavesAPI {

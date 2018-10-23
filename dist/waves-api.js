@@ -12927,7 +12927,6 @@ var request = require("./utils/request");
 var storage = require("./utils/storage");
 var NodeAPI = require("./api/node/index");
 var MatcherAPI = require("./api/matcher/index");
-var SucreAPI = require("./api/sucre/index");
 var constants = require("./constants");
 var config_1 = require("./config");
 var tools_1 = require("./tools");
@@ -12953,9 +12952,6 @@ var WavesAPI = /** @class */ (function () {
             },
             Matcher: {
                 v1: MatcherAPI.v1
-            },
-            Sucre: {
-                v1: SucreAPI.v1
             }
         };
         if (this instanceof WavesAPI) {
@@ -12982,7 +12978,7 @@ exports.create = create;
 exports.MAINNET_CONFIG = constants.DEFAULT_MAINNET_CONFIG;
 exports.TESTNET_CONFIG = constants.DEFAULT_TESTNET_CONFIG;
 
-},{"./api/matcher/index":61,"./api/node/index":65,"./api/sucre/index":90,"./classes/Asset":92,"./classes/AssetPair":93,"./classes/ByteProcessor":94,"./classes/Money":95,"./classes/OrderPrice":96,"./classes/Seed":97,"./classes/Transactions":98,"./config":99,"./constants":100,"./libs/bignumber":105,"./tools":112,"./utils/crypto":115,"./utils/request":118,"./utils/storage":119}],61:[function(require,module,exports){
+},{"./api/matcher/index":61,"./api/node/index":65,"./classes/Asset":90,"./classes/AssetPair":91,"./classes/ByteProcessor":92,"./classes/Money":93,"./classes/OrderPrice":94,"./classes/Seed":95,"./classes/Transactions":96,"./config":97,"./constants":98,"./libs/bignumber":103,"./tools":110,"./utils/crypto":113,"./utils/request":116,"./utils/storage":117}],61:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var info_1 = require("./v1/info");
@@ -13005,11 +13001,11 @@ var request_1 = require("../../../utils/request");
 var fetch = request_1.createFetchWrapper(1 /* MATCHER */, 0 /* V1 */, request_1.processJSON);
 exports.default = {
     getMatcherKey: function () {
-        return fetch('/');
+        return fetch('/matcher/');
     }
 };
 
-},{"../../../utils/request":118}],63:[function(require,module,exports){
+},{"../../../utils/request":116}],63:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -13057,16 +13053,16 @@ var generateCancelLikeRequest = function (type) {
         return authData.prepareForAPI(keyPair.privateKey)
             .then(postCancelOrder)
             .then(function (tx) {
-            return fetch("/orderbook/" + amountAssetId + "/" + priceAssetId + "/" + type, __assign({}, request_2.POST_TEMPLATE, { body: JSON.stringify(tx) }));
+            return fetch("/matcher/orderbook/" + amountAssetId + "/" + priceAssetId + "/" + type, __assign({}, request_2.POST_TEMPLATE, { body: JSON.stringify(tx) }));
         });
     };
 };
 exports.default = {
     getOrderbooks: function () {
-        return fetch('/orderbook');
+        return fetch('/matcher/orderbook');
     },
     getOrderbook: function (assetOne, assetTwo) {
-        return fetch("/orderbook/" + assetOne + "/" + assetTwo);
+        return fetch("/matcher/orderbook/" + assetOne + "/" + assetTwo);
     },
     getOrders: function (assetOne, assetTwo, keyPair) {
         var authData = new GetOrdersAuthData({
@@ -13074,7 +13070,7 @@ exports.default = {
             timestamp: Date.now()
         });
         return authData.prepareForAPI(keyPair.privateKey).then(function (preparedData) {
-            return fetch("/orderbook/" + assetOne + "/" + assetTwo + "/publicKey/" + keyPair.publicKey, {
+            return fetch("/matcher/orderbook/" + assetOne + "/" + assetTwo + "/publicKey/" + keyPair.publicKey, {
                 headers: {
                     Timestamp: preparedData.timestamp,
                     Signature: preparedData.signature
@@ -13088,7 +13084,7 @@ exports.default = {
             timestamp: Date.now()
         });
         return authData.prepareForAPI(keyPair.privateKey).then(function (preparedData) {
-            return fetch("/orderbook/" + keyPair.publicKey, {
+            return fetch("/matcher/orderbook/" + keyPair.publicKey, {
                 headers: {
                     Timestamp: preparedData.timestamp,
                     Signature: preparedData.signature
@@ -13097,13 +13093,13 @@ exports.default = {
         });
     },
     createOrder: request_1.wrapTransactionRequest(Transactions_1.default.Order, preCreateOrderAsync, postCreateOrder, function (postParams) {
-        return fetch('/orderbook', postParams);
+        return fetch('/matcher/orderbook', postParams);
     }),
     cancelOrder: generateCancelLikeRequest('cancel'),
     deleteOrder: generateCancelLikeRequest('delete')
 };
 
-},{"../../../classes/ByteProcessor":94,"../../../classes/Transactions":98,"../../../utils/remap":117,"../../../utils/request":118,"./orderbooks.x":64}],64:[function(require,module,exports){
+},{"../../../classes/ByteProcessor":92,"../../../classes/Transactions":96,"../../../utils/remap":115,"../../../utils/request":116,"./orderbooks.x":64}],64:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13150,7 +13146,7 @@ exports.createOrderSchema = new ts_api_validator_1.Schema({
     }
 });
 
-},{"../../../constants":100,"../../schemaFields":87,"ts-api-validator":39}],65:[function(require,module,exports){
+},{"../../../constants":98,"../../schemaFields":87,"ts-api-validator":39}],65:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var addresses_1 = require("./v1/addresses");
@@ -13195,7 +13191,7 @@ exports.default = {
     }
 };
 
-},{"../../../utils/request":118}],67:[function(require,module,exports){
+},{"../../../utils/request":116}],67:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Transactions_1 = require("../../../classes/Transactions");
@@ -13219,7 +13215,7 @@ exports.default = {
     })
 };
 
-},{"../../../classes/Transactions":98,"../../../utils/remap":117,"../../../utils/request":118,"./aliases.x":68}],68:[function(require,module,exports){
+},{"../../../classes/Transactions":96,"../../../utils/remap":115,"../../../utils/request":116,"./aliases.x":68}],68:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13251,7 +13247,7 @@ exports.createAliasSchema = new ts_api_validator_1.Schema({
     }
 });
 
-},{"../../../constants":100,"../../../utils/remap":117,"ts-api-validator":39}],69:[function(require,module,exports){
+},{"../../../constants":98,"../../../utils/remap":115,"ts-api-validator":39}],69:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Transactions_1 = require("../../../classes/Transactions");
@@ -13309,7 +13305,7 @@ exports.default = {
     })
 };
 
-},{"../../../classes/Transactions":98,"../../../constants":100,"../../../utils/remap":117,"../../../utils/request":118,"./addresses":66,"./assets.x":70}],70:[function(require,module,exports){
+},{"../../../classes/Transactions":96,"../../../constants":98,"../../../utils/remap":115,"../../../utils/request":116,"./addresses":66,"./assets.x":70}],70:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13400,7 +13396,7 @@ exports.burnSchema = new ts_api_validator_1.Schema({
     }
 });
 
-},{"../../../constants":100,"../../../utils/remap":117,"../../schemaFields":87,"ts-api-validator":39}],71:[function(require,module,exports){
+},{"../../../constants":98,"../../../utils/remap":115,"../../schemaFields":87,"ts-api-validator":39}],71:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var request_1 = require("../../../utils/request");
@@ -13423,7 +13419,7 @@ exports.default = {
     }
 };
 
-},{"../../../utils/request":118}],72:[function(require,module,exports){
+},{"../../../utils/request":116}],72:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Transactions_1 = require("../../../classes/Transactions");
@@ -13449,7 +13445,7 @@ exports.default = {
     })
 };
 
-},{"../../../classes/Transactions":98,"../../../utils/remap":117,"../../../utils/request":118,"./leasing.x":73}],73:[function(require,module,exports){
+},{"../../../classes/Transactions":96,"../../../utils/remap":115,"../../../utils/request":116,"./leasing.x":73}],73:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13514,7 +13510,7 @@ exports.default = {
     }
 };
 
-},{"../../../config":99,"../../../constants":100,"../../../utils/request":118}],75:[function(require,module,exports){
+},{"../../../config":97,"../../../constants":98,"../../../utils/request":116}],75:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Asset_1 = require("../../../classes/Asset");
@@ -13548,7 +13544,7 @@ exports.default = {
     }
 };
 
-},{"../../../classes/Asset":92,"../../../classes/Money":95}],76:[function(require,module,exports){
+},{"../../../classes/Asset":90,"../../../classes/Money":93}],76:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants = require("../../../constants");
@@ -13575,7 +13571,7 @@ exports.default = {
 };
 var _a;
 
-},{"../../../constants":100}],77:[function(require,module,exports){
+},{"../../../constants":98}],77:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var logger_1 = require("../../../utils/logger");
@@ -13585,7 +13581,7 @@ function default_1(message) {
 }
 exports.default = default_1;
 
-},{"../../../utils/logger":116}],78:[function(require,module,exports){
+},{"../../../utils/logger":114}],78:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var schemas = require("./addresses.x");
@@ -13688,7 +13684,7 @@ exports.default = {
     }
 };
 
-},{"../../../classes/Money":95,"../../../constants":100,"../../schemaTools":89,"../v1/addresses":66,"../v1/aliases":67,"../v1/assets":69,"../v1/transactions":74,"./_combiners":75,"./_filters":76,"./_warn":77,"./addresses.x":79}],79:[function(require,module,exports){
+},{"../../../classes/Money":93,"../../../constants":98,"../../schemaTools":89,"../v1/addresses":66,"../v1/aliases":67,"../v1/assets":69,"../v1/transactions":74,"./_combiners":75,"./_filters":76,"./_warn":77,"./addresses.x":79}],79:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13767,7 +13763,7 @@ exports.assetBalancesSchema = new ts_api_validator_1.Schema({
     }
 });
 
-},{"../../../constants":100,"../../../utils/remap":117,"../../schema.MoneyPart":84,"../../schemaTemporaryTools":88,"ts-api-validator":39}],80:[function(require,module,exports){
+},{"../../../constants":98,"../../../utils/remap":115,"../../schema.MoneyPart":84,"../../schemaTemporaryTools":88,"ts-api-validator":39}],80:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var aliases_1 = require("../v1/aliases");
@@ -13832,7 +13828,7 @@ exports.default = {
     }
 };
 
-},{"../../../constants":100,"../../schemaTools":89,"../v1/transactions":74}],83:[function(require,module,exports){
+},{"../../../constants":98,"../../schemaTools":89,"../v1/transactions":74}],83:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -13867,7 +13863,7 @@ var Base58Part = /** @class */ (function (_super) {
 }(ts_api_validator_1.BasePart));
 exports.Base58Part = Base58Part;
 
-},{"../libs/base58":104,"../libs/converters":107,"ts-api-validator":39}],84:[function(require,module,exports){
+},{"../libs/base58":102,"../libs/converters":105,"ts-api-validator":39}],84:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -13918,7 +13914,7 @@ var MoneyPart = /** @class */ (function (_super) {
 }(ts_api_validator_1.BasePart));
 exports.MoneyPart = MoneyPart;
 
-},{"../classes/Money":95,"../utils/remap":117,"ts-api-validator":39,"ts-utils":50}],85:[function(require,module,exports){
+},{"../classes/Money":93,"../utils/remap":115,"ts-api-validator":39,"ts-utils":50}],85:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -13979,7 +13975,7 @@ var OrderPricePart = /** @class */ (function (_super) {
 }(ts_api_validator_1.BasePart));
 exports.OrderPricePart = OrderPricePart;
 
-},{"../classes/OrderPrice":96,"../utils/remap":117,"ts-api-validator":39,"ts-utils":50}],86:[function(require,module,exports){
+},{"../classes/OrderPrice":94,"../utils/remap":115,"ts-api-validator":39,"ts-utils":50}],86:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -14198,7 +14194,7 @@ exports.createAliasTransactionSchema = new ts_api_validator_1.Schema({
     content: __assign({}, getTxCommonFields(constants.CREATE_ALIAS_TX_NAME, true), { alias: getTxAlias() })
 });
 
-},{"../constants":100,"../utils/remap":117,"./schema.Base58Part":83,"./schema.MoneyPart":84,"./schema.OrderPricePart":85,"./schemaTemporaryTools":88,"ts-api-validator":39}],87:[function(require,module,exports){
+},{"../constants":98,"../utils/remap":115,"./schema.Base58Part":83,"./schema.MoneyPart":84,"./schema.OrderPricePart":85,"./schemaTemporaryTools":88,"ts-api-validator":39}],87:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -14245,7 +14241,7 @@ exports.default = {
     }
 };
 
-},{"../constants":100,"../utils/remap":117,"ts-api-validator":39}],88:[function(require,module,exports){
+},{"../constants":98,"../utils/remap":115,"ts-api-validator":39}],88:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function stub(partType) {
@@ -14295,25 +14291,7 @@ function siftTransaction(transaction) {
 }
 exports.siftTransaction = siftTransaction;
 
-},{"../constants":100,"./schema.transactions":86}],90:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var accounts_1 = require("./v1/accounts");
-exports.v1 = {
-    get: accounts_1.default.get,
-};
-
-},{"./v1/accounts":91}],91:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = {
-    get: function () {
-        console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        return Promise.resolve("hai");
-    },
-};
-
-},{}],92:[function(require,module,exports){
+},{"../constants":98,"./schema.transactions":86}],90:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var storage_1 = require("../utils/storage");
@@ -14416,7 +14394,7 @@ var Asset = /** @class */ (function () {
 }());
 exports.default = Asset;
 
-},{"../api/node/index":65,"../config":99,"../constants":100,"../utils/storage":119}],93:[function(require,module,exports){
+},{"../api/node/index":65,"../config":97,"../constants":98,"../utils/storage":117}],91:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("../api/matcher/index");
@@ -14486,7 +14464,7 @@ exports.default = {
     }
 };
 
-},{"../api/matcher/index":61,"../utils/storage":119,"./Asset":92}],94:[function(require,module,exports){
+},{"../api/matcher/index":61,"../utils/storage":117,"./Asset":90}],92:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -14682,7 +14660,7 @@ var Recipient = /** @class */ (function (_super) {
 }(ByteProcessor));
 exports.Recipient = Recipient;
 
-},{"../config":99,"../constants":100,"../libs/base58":104,"../utils/concat":113,"../utils/convert":114}],95:[function(require,module,exports){
+},{"../config":97,"../constants":98,"../libs/base58":102,"../utils/concat":111,"../utils/convert":112}],93:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var bignumber_1 = require("../libs/bignumber");
@@ -14818,7 +14796,7 @@ var Money = /** @class */ (function () {
 }());
 exports.default = Money;
 
-},{"../libs/bignumber":105,"./Asset":92}],96:[function(require,module,exports){
+},{"../libs/bignumber":103,"./Asset":90}],94:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var bignumber_1 = require("../libs/bignumber");
@@ -14898,7 +14876,7 @@ var OrderPrice = /** @class */ (function () {
 }());
 exports.default = OrderPrice;
 
-},{"../libs/bignumber":105,"./AssetPair":93}],97:[function(require,module,exports){
+},{"../libs/bignumber":103,"./AssetPair":91}],95:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var base58_1 = require("../libs/base58");
@@ -14983,7 +14961,7 @@ exports.default = {
     decryptSeedPhrase: decryptSeedPhrase
 };
 
-},{"../config":99,"../libs/base58":104,"../seedDictionary":111,"../utils/crypto":115,"../utils/logger":116}],98:[function(require,module,exports){
+},{"../config":97,"../libs/base58":102,"../seedDictionary":109,"../utils/crypto":113,"../utils/logger":114}],96:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -15219,7 +15197,7 @@ exports.default = {
     }
 };
 
-},{"../config":99,"../constants":100,"../libs/base58":104,"../utils/concat":113,"../utils/crypto":115,"./ByteProcessor":94}],99:[function(require,module,exports){
+},{"../config":97,"../constants":98,"../libs/base58":102,"../utils/concat":111,"../utils/crypto":113,"./ByteProcessor":92}],97:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -15294,7 +15272,7 @@ exports.default = {
     }
 };
 
-},{"./constants":100,"./utils/request":118}],100:[function(require,module,exports){
+},{"./constants":98,"./utils/request":116}],98:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -15366,7 +15344,7 @@ exports.WAVES_V1_ISSUE_TX = {
     type: exports.ISSUE_TX
 };
 
-},{}],101:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -15413,7 +15391,7 @@ var WavesError = /** @class */ (function (_super) {
 }(Error));
 exports.default = WavesError;
 
-},{}],102:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -15450,7 +15428,7 @@ var WavesRequestError = /** @class */ (function (_super) {
 }(WavesError_1.default));
 exports.default = WavesRequestError;
 
-},{"./WavesError":101}],103:[function(require,module,exports){
+},{"./WavesError":99}],101:[function(require,module,exports){
 "use strict";
 // Curve25519 signatures (and also key agreement)
 // like in the early Axolotl.
@@ -16826,7 +16804,7 @@ axlsign.generateKeyPair = function (seed) {
 };
 exports.default = axlsign;
 
-},{}],104:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
@@ -16893,7 +16871,7 @@ exports.default = {
     }
 };
 
-},{}],105:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var bignumber_js_1 = require("bignumber.js");
@@ -16902,7 +16880,7 @@ bignumber_js_1.default.config({
 });
 exports.default = bignumber_js_1.default;
 
-},{"bignumber.js":2}],106:[function(require,module,exports){
+},{"bignumber.js":2}],104:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -17219,7 +17197,7 @@ function blake2bHex(input, key, outlen) {
 exports.blake2bHex = blake2bHex;
 
 }).call(this,require("buffer").Buffer)
-},{"../utils/logger":116,"buffer":3}],107:[function(require,module,exports){
+},{"../utils/logger":114,"buffer":3}],105:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var CryptoJS = require("crypto-js");
@@ -17501,7 +17479,7 @@ var converters = function () {
 /** END OF THE LICENSED CODE */
 exports.default = converters;
 
-},{"crypto-js":12}],108:[function(require,module,exports){
+},{"crypto-js":12}],106:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var fetchSubstitute = (function () {
@@ -17520,7 +17498,7 @@ var fetchSubstitute = (function () {
 })();
 exports.default = fetchSubstitute;
 
-},{"node-fetch":undefined}],109:[function(require,module,exports){
+},{"node-fetch":undefined}],107:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -17589,7 +17567,7 @@ exports.default = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":3,"crypto":undefined}],110:[function(require,module,exports){
+},{"buffer":3,"crypto":undefined}],108:[function(require,module,exports){
 "use strict";
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
@@ -18032,7 +18010,7 @@ var f = function (s) {
 };
 exports.keccak256 = methods.keccak_256;
 
-},{}],111:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = [
@@ -18222,7 +18200,7 @@ exports.default = [
     'wrist', 'write', 'wrong', 'yard', 'year', 'yellow', 'you', 'young', 'youth', 'zebra', 'zero', 'zone', 'zoo'
 ];
 
-},{}],112:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var base58_1 = require("./libs/base58");
@@ -18240,7 +18218,7 @@ exports.default = {
     siftTransaction: schemaTools_1.siftTransaction
 };
 
-},{"./api/schemaTools":89,"./libs/base58":104,"./utils/crypto":115}],113:[function(require,module,exports){
+},{"./api/schemaTools":89,"./libs/base58":102,"./utils/crypto":113}],111:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function concatUint8Arrays() {
@@ -18266,7 +18244,7 @@ function concatUint8Arrays() {
 }
 exports.concatUint8Arrays = concatUint8Arrays;
 
-},{}],114:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var converters_1 = require("../libs/converters");
@@ -18317,7 +18295,7 @@ exports.default = {
     }
 };
 
-},{"../libs/converters":107}],115:[function(require,module,exports){
+},{"../libs/converters":105}],113:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var CryptoJS = require("crypto-js");
@@ -18462,7 +18440,7 @@ exports.default = {
     }
 };
 
-},{"../config":99,"../constants":100,"../libs/axlsign":103,"../libs/base58":104,"../libs/blake2b":106,"../libs/converters":107,"../libs/secure-random":109,"../libs/sha3":110,"./concat":113,"crypto-js":12}],116:[function(require,module,exports){
+},{"../config":97,"../constants":98,"../libs/axlsign":101,"../libs/base58":102,"../libs/blake2b":104,"../libs/converters":105,"../libs/secure-random":107,"../libs/sha3":108,"./concat":111,"crypto-js":12}],114:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var config_1 = require("../config");
@@ -18490,7 +18468,7 @@ exports.default = {
     }
 };
 
-},{"../config":99}],117:[function(require,module,exports){
+},{"../config":97}],115:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants = require("../constants");
@@ -18560,7 +18538,7 @@ function createRemapper(rules) {
 }
 exports.createRemapper = createRemapper;
 
-},{"../constants":100}],118:[function(require,module,exports){
+},{"../constants":98}],116:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -18637,7 +18615,7 @@ function wrapTransactionRequest(TransactionConstructor, preRemapAsync, postRemap
 exports.wrapTransactionRequest = wrapTransactionRequest;
 var _a;
 
-},{"../config":99,"../errors/WavesRequestError":102,"../libs/fetch":108}],119:[function(require,module,exports){
+},{"../config":97,"../errors/WavesRequestError":100,"../libs/fetch":106}],117:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -18719,5 +18697,5 @@ function getStorage(init) {
 }
 exports.getStorage = getStorage;
 
-},{"../config":99}]},{},[60])(60)
+},{"../config":97}]},{},[60])(60)
 });
