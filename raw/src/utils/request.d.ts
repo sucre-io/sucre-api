@@ -7,6 +7,7 @@ export interface IFetchWrapper<T> {
 export declare const enum PRODUCTS {
     NODE = 0,
     MATCHER = 1,
+    SUCREIO = 2,
 }
 export declare const enum VERSIONS {
     V1 = 0,

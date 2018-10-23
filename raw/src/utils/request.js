@@ -23,6 +23,7 @@ var key = function (product, version) {
 };
 var hostResolvers = (_a = {},
     _a[key(0 /* NODE */, 0 /* V1 */)] = function () { return config_1.default.getNodeAddress(); },
+    _a[key(2 /* SUCREIO */, 0 /* V1 */)] = function () { return config_1.default.getSucreioAddress(); },
     _a[key(1 /* MATCHER */, 0 /* V1 */)] = function () { return config_1.default.getMatcherAddress(); },
     _a);
 function normalizeHost(host) {

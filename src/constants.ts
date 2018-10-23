@@ -11,6 +11,7 @@ export const WAVES_PROPS: IAssetObject = {
 
 export const MAINNET_BYTE: number = 'W'.charCodeAt(0);
 export const TESTNET_BYTE: number = 'T'.charCodeAt(0);
+export const SUCREIO_BYTE: number = 'S'.charCodeAt(0);
 
 export const INITIAL_NONCE = 0;
 
@@ -59,13 +60,23 @@ export const DEFAULT_MAINNET_CONFIG: IWavesConfig = {
     ...DEFAULT_BASIC_CONFIG,
     networkByte: MAINNET_BYTE,
     nodeAddress: 'https://nodes.wavesnodes.com',
+    sucreioAddress: 'https://104.248.7.158:9636',
     matcherAddress: 'https://nodes.wavesnodes.com/matcher'
+};
+
+export const DEFAULT_SUCREIO_CONFIG: IWavesConfig = {
+    ...DEFAULT_BASIC_CONFIG,
+    networkByte: SUCREIO_BYTE,
+    nodeAddress: 'https://node.pongo.online',
+    sucreioAddress: 'https://104.248.7.158:9636',
+    matcherAddress: 'https://node.pongo.online/matcher'
 };
 
 export const DEFAULT_TESTNET_CONFIG: IWavesConfig = {
     ...DEFAULT_BASIC_CONFIG,
     networkByte: TESTNET_BYTE,
     nodeAddress: 'https://testnet1.wavesnodes.com',
+    sucreioAddress: 'https://104.248.7.158:9636',
     matcherAddress: 'https://testnet1.wavesnodes.com/matcher'
 };
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"accounts.js","sourceRoot":"","sources":["../../../../../src/api/sucreio/v1/accounts.ts"],"names":[],"mappings":";;AAAA,kDAAqH;AAKrH,IAAM,KAAK,GAAG,4BAAkB,8BAAgC,qBAAW,CAAC,CAAC;AAG7E,kBAAe;IAEb,MAAM,YAAC,IAAI;QACT,MAAM,CAAC,KAAK,CAAC,SAAS,CAAC,CAAC,IAAI,CAAC,UAAC,GAAG;YAC/B,MAAM,CAAC,GAAG,CAAC;QACb,CAAC,CAAC,CAAC;IACL,CAAC;CAEF,CAAC"}

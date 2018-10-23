@@ -19,6 +19,9 @@ import * as storage from './utils/storage';
 import * as NodeAPI from './api/node/index';
 import { INodeAPIv1, INodeAPIv2 } from './api/node/index';
 
+import * as SucreioAPI from './api/sucreio/index';
+import { ISucreioAPIv1 } from './api/sucreio/index';
+
 import * as MatcherAPI from './api/matcher/index';
 import { IMatcherAPIv1 } from './api/matcher/index';
 
@@ -28,13 +31,16 @@ import tools from './tools';
 
 
 export interface IAPIVersions {
-    Node: {
-        v1: INodeAPIv1,
-        v2: INodeAPIv2
-    },
-    Matcher: {
-        v1: IMatcherAPIv1
-    }
+  Node: {
+      v1: INodeAPIv1,
+      v2: INodeAPIv2
+  },
+  Sucreio: {
+      v1: ISucreioAPIv1
+  },
+  Matcher: {
+      v1: IMatcherAPIv1
+  }
 }
 
 export interface IWavesAPI {
@@ -73,13 +79,16 @@ class WavesAPI implements IWavesAPI {
     public readonly tools = tools;
 
     public readonly API = {
-        Node: {
-            v1: NodeAPI.v1,
-            v2: NodeAPI.v2
-        },
-        Matcher: {
-            v1: MatcherAPI.v1
-        }
+      Node: {
+          v1: NodeAPI.v1,
+          v2: NodeAPI.v2
+      },
+      Sucreio: {
+          v1: SucreioAPI.v1
+      },
+      Matcher: {
+          v1: MatcherAPI.v1
+      }
     };
 
     private static _instance;
@@ -115,4 +124,5 @@ export function create(config: IWavesConfig): IWavesAPI {
 }
 
 export const MAINNET_CONFIG: IWavesConfig = constants.DEFAULT_MAINNET_CONFIG;
+export const SUCREIO_CONFIG: IWavesConfig = constants.DEFAULT_SUCREIO_CONFIG;
 export const TESTNET_CONFIG: IWavesConfig = constants.DEFAULT_TESTNET_CONFIG;
