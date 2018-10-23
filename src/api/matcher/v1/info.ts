@@ -7,7 +7,7 @@ const fetch = createFetchWrapper(PRODUCTS.MATCHER, VERSIONS.V1, processJSON);
 export default {
 
     getMatcherKey() {
-        return fetch('/matcher/');
+        return fetch('/');
     }
 
 };

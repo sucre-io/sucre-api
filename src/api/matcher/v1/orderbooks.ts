@@ -55,7 +55,7 @@ const generateCancelLikeRequest = (type: string) => {
         return authData.prepareForAPI(keyPair.privateKey)
             .then(postCancelOrder)
             .then((tx) => {
-                return fetch(`/matcher/orderbook/${amountAssetId}/${priceAssetId}/${type}`, {
+                return fetch(`/orderbook/${amountAssetId}/${priceAssetId}/${type}`, {
                     ...POST_TEMPLATE,
                     body: JSON.stringify(tx)
                 });
@@ -69,11 +69,11 @@ const generateCancelLikeRequest = (type: string) => {
 export default {
 
     getOrderbooks() {
-        return fetch('/matcher/orderbook');
+        return fetch('/orderbook');
     },
 
     getOrderbook(assetOne: string, assetTwo: string) {
-        return fetch(`/matcher/orderbook/${assetOne}/${assetTwo}`);
+        return fetch(`/orderbook/${assetOne}/${assetTwo}`);
     },
 
     getOrders(assetOne: string, assetTwo: string, keyPair: IKeyPair) {
@@ -84,7 +84,7 @@ export default {
         });
 
         return authData.prepareForAPI(keyPair.privateKey).then((preparedData) => {
-            return fetch(`/matcher/orderbook/${assetOne}/${assetTwo}/publicKey/${keyPair.publicKey}`, {
+            return fetch(`/orderbook/${assetOne}/${assetTwo}/publicKey/${keyPair.publicKey}`, {
                 headers: {
                     Timestamp: preparedData.timestamp,
                     Signature: preparedData.signature
@@ -102,7 +102,7 @@ export default {
         });
 
         return authData.prepareForAPI(keyPair.privateKey).then((preparedData) => {
-            return fetch(`/matcher/orderbook/${keyPair.publicKey}`, {
+            return fetch(`/orderbook/${keyPair.publicKey}`, {
                 headers: {
                     Timestamp: preparedData.timestamp,
                     Signature: preparedData.signature
@@ -113,7 +113,7 @@ export default {
     },
 
     createOrder: wrapTransactionRequest(Transactions.Order, preCreateOrderAsync, postCreateOrder, (postParams) => {
-        return fetch('/matcher/orderbook', postParams);
+        return fetch('/orderbook', postParams);
     }) as TTransactionRequest,
 
     cancelOrder: generateCancelLikeRequest('cancel'),

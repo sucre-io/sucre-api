@@ -45,16 +45,16 @@ var generateCancelLikeRequest = function (type) {
         return authData.prepareForAPI(keyPair.privateKey)
             .then(postCancelOrder)
             .then(function (tx) {
-            return fetch("/matcher/orderbook/" + amountAssetId + "/" + priceAssetId + "/" + type, __assign({}, request_2.POST_TEMPLATE, { body: JSON.stringify(tx) }));
+            return fetch("/orderbook/" + amountAssetId + "/" + priceAssetId + "/" + type, __assign({}, request_2.POST_TEMPLATE, { body: JSON.stringify(tx) }));
         });
     };
 };
 exports.default = {
     getOrderbooks: function () {
-        return fetch('/matcher/orderbook');
+        return fetch('/orderbook');
     },
     getOrderbook: function (assetOne, assetTwo) {
-        return fetch("/matcher/orderbook/" + assetOne + "/" + assetTwo);
+        return fetch("/orderbook/" + assetOne + "/" + assetTwo);
     },
     getOrders: function (assetOne, assetTwo, keyPair) {
         var authData = new GetOrdersAuthData({
@@ -62,7 +62,7 @@ exports.default = {
             timestamp: Date.now()
         });
         return authData.prepareForAPI(keyPair.privateKey).then(function (preparedData) {
-            return fetch("/matcher/orderbook/" + assetOne + "/" + assetTwo + "/publicKey/" + keyPair.publicKey, {
+            return fetch("/orderbook/" + assetOne + "/" + assetTwo + "/publicKey/" + keyPair.publicKey, {
                 headers: {
                     Timestamp: preparedData.timestamp,
                     Signature: preparedData.signature
@@ -76,7 +76,7 @@ exports.default = {
             timestamp: Date.now()
         });
         return authData.prepareForAPI(keyPair.privateKey).then(function (preparedData) {
-            return fetch("/matcher/orderbook/" + keyPair.publicKey, {
+            return fetch("/orderbook/" + keyPair.publicKey, {
                 headers: {
                     Timestamp: preparedData.timestamp,
                     Signature: preparedData.signature
@@ -85,7 +85,7 @@ exports.default = {
         });
     },
     createOrder: request_1.wrapTransactionRequest(Transactions_1.default.Order, preCreateOrderAsync, postCreateOrder, function (postParams) {
-        return fetch('/matcher/orderbook', postParams);
+        return fetch('/orderbook', postParams);
     }),
     cancelOrder: generateCancelLikeRequest('cancel'),
     deleteOrder: generateCancelLikeRequest('delete')
