@@ -8643,8 +8643,8 @@ var crypto_1 = require("./utils/crypto");
 var request = require("./utils/request");
 var storage = require("./utils/storage");
 var NodeAPI = require("./api/node/index");
+var SucreioAPI = require("./api/sucreio/index");
 var MatcherAPI = require("./api/matcher/index");
-var SucreAPI = require("./api/sucre/index");
 var constants = require("./constants");
 var config_1 = require("./config");
 var tools_1 = require("./tools");
@@ -8668,11 +8668,11 @@ var WavesAPI = /** @class */ (function () {
                 v1: NodeAPI.v1,
                 v2: NodeAPI.v2
             },
+            Sucreio: {
+                v1: SucreioAPI.v1
+            },
             Matcher: {
                 v1: MatcherAPI.v1
-            },
-            Sucre: {
-                v1: SucreAPI.v1
             }
         };
         if (this instanceof WavesAPI) {
@@ -8697,9 +8697,10 @@ function create(config) {
 }
 exports.create = create;
 exports.MAINNET_CONFIG = constants.DEFAULT_MAINNET_CONFIG;
+exports.SUCREIO_CONFIG = constants.DEFAULT_SUCREIO_CONFIG;
 exports.TESTNET_CONFIG = constants.DEFAULT_TESTNET_CONFIG;
 
-},{"./api/matcher/index":39,"./api/node/index":43,"./api/sucre/index":68,"./classes/Asset":70,"./classes/AssetPair":71,"./classes/ByteProcessor":72,"./classes/Money":73,"./classes/OrderPrice":74,"./classes/Seed":75,"./classes/Transactions":76,"./config":77,"./constants":78,"./libs/bignumber":83,"./tools":90,"./utils/crypto":93,"./utils/request":96,"./utils/storage":97}],39:[function(require,module,exports){
+},{"./api/matcher/index":39,"./api/node/index":43,"./api/sucreio/index":68,"./classes/Asset":70,"./classes/AssetPair":71,"./classes/ByteProcessor":72,"./classes/Money":73,"./classes/OrderPrice":74,"./classes/Seed":75,"./classes/Transactions":76,"./config":77,"./constants":78,"./libs/bignumber":83,"./tools":90,"./utils/crypto":93,"./utils/request":96,"./utils/storage":97}],39:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var info_1 = require("./v1/info");
@@ -10017,20 +10018,23 @@ exports.siftTransaction = siftTransaction;
 Object.defineProperty(exports, "__esModule", { value: true });
 var accounts_1 = require("./v1/accounts");
 exports.v1 = {
-    get: accounts_1.default.get,
+    accounts: accounts_1.default
 };
 
 },{"./v1/accounts":69}],69:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var request_1 = require("../../../utils/request");
+var fetch = request_1.createFetchWrapper(2 /* SUCREIO */, 0 /* V1 */, request_1.processJSON);
 exports.default = {
-    get: function () {
-        console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        return Promise.resolve("hai");
+    create: function (data) {
+        return fetch("/signup").then(function (res) {
+            return res;
+        });
     },
 };
 
-},{}],70:[function(require,module,exports){
+},{"../../../utils/request":96}],70:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var storage_1 = require("../utils/storage");
@@ -10957,6 +10961,8 @@ function checkRequiredFields(conf) {
         throw new Error('Missing node address');
     if (!conf.matcherAddress)
         throw new Error('Missing matcher address');
+    if (!conf.sucreioAddress)
+        throw new Error('Missing sucre address');
 }
 exports.default = {
     getNetworkByte: function () {
@@ -10967,6 +10973,9 @@ exports.default = {
     },
     getMatcherAddress: function () {
         return config.matcherAddress;
+    },
+    getSucreioAddress: function () {
+        return config.sucreioAddress;
     },
     getMinimumSeedLength: function () {
         return config.minimumSeedLength;
@@ -10994,6 +11003,7 @@ exports.default = {
         Object.keys(newConfig).forEach(function (key) {
             switch (key) {
                 case 'nodeAddress':
+                case 'sucreioAddress':
                 case 'matcherAddress':
                     config[key] = request_1.normalizeHost(newConfig[key]);
                     break;
@@ -11031,6 +11041,7 @@ exports.WAVES_PROPS = {
 };
 exports.MAINNET_BYTE = 'W'.charCodeAt(0);
 exports.TESTNET_BYTE = 'T'.charCodeAt(0);
+exports.SUCREIO_BYTE = 'S'.charCodeAt(0);
 exports.INITIAL_NONCE = 0;
 exports.ADDRESS_VERSION = 1;
 exports.ALIAS_VERSION = 2;
@@ -11064,8 +11075,9 @@ exports.DEFAULT_BASIC_CONFIG = {
     requestLimit: 100,
     logLevel: 'warning'
 };
-exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.wavesnodes.com', matcherAddress: 'https://nodes.wavesnodes.com/matcher' });
-exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.wavesnodes.com', matcherAddress: 'https://testnet1.wavesnodes.com/matcher' });
+exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.wavesnodes.com', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://nodes.wavesnodes.com/matcher' });
+exports.DEFAULT_SUCREIO_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.SUCREIO_BYTE, nodeAddress: 'https://node.pongo.online', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://node.pongo.online/matcher' });
+exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.wavesnodes.com', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://testnet1.wavesnodes.com/matcher' });
 exports.WAVES_V1_ISSUE_TX = {
     assetId: exports.WAVES,
     decimals: 8,
@@ -14303,6 +14315,7 @@ var key = function (product, version) {
 };
 var hostResolvers = (_a = {},
     _a[key(0 /* NODE */, 0 /* V1 */)] = function () { return config_1.default.getNodeAddress(); },
+    _a[key(2 /* SUCREIO */, 0 /* V1 */)] = function () { return config_1.default.getSucreioAddress(); },
     _a[key(1 /* MATCHER */, 0 /* V1 */)] = function () { return config_1.default.getMatcherAddress(); },
     _a);
 function normalizeHost(host) {

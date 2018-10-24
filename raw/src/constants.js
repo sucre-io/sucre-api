@@ -17,6 +17,7 @@ exports.WAVES_PROPS = {
 };
 exports.MAINNET_BYTE = 'W'.charCodeAt(0);
 exports.TESTNET_BYTE = 'T'.charCodeAt(0);
+exports.SUCREIO_BYTE = 'S'.charCodeAt(0);
 exports.INITIAL_NONCE = 0;
 exports.ADDRESS_VERSION = 1;
 exports.ALIAS_VERSION = 2;
@@ -50,8 +51,9 @@ exports.DEFAULT_BASIC_CONFIG = {
     requestLimit: 100,
     logLevel: 'warning'
 };
-exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.wavesnodes.com', matcherAddress: 'https://nodes.wavesnodes.com/matcher' });
-exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.wavesnodes.com', matcherAddress: 'https://testnet1.wavesnodes.com/matcher' });
+exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.wavesnodes.com', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://nodes.wavesnodes.com/matcher' });
+exports.DEFAULT_SUCREIO_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.SUCREIO_BYTE, nodeAddress: 'https://node.pongo.online', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://node.pongo.online/matcher' });
+exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.wavesnodes.com', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://testnet1.wavesnodes.com/matcher' });
 exports.WAVES_V1_ISSUE_TX = {
     assetId: exports.WAVES,
     decimals: 8,

@@ -13,7 +13,7 @@ export interface IFetchWrapper<T> {
 }
 
 
-export const enum PRODUCTS { NODE, MATCHER }
+export const enum PRODUCTS { NODE, MATCHER, SUCREIO }
 export const enum VERSIONS { V1 }
 
 
@@ -32,6 +32,7 @@ const key = (product, version) => {
 
 const hostResolvers: IHash<() => string> = {
     [key(PRODUCTS.NODE, VERSIONS.V1)]: () => config.getNodeAddress(),
+    [key(PRODUCTS.SUCREIO, VERSIONS.V1)]: () => config.getSucreioAddress(),
     [key(PRODUCTS.MATCHER, VERSIONS.V1)]: () => config.getMatcherAddress()
 };
 
