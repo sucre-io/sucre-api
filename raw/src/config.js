@@ -18,8 +18,7 @@ function checkRequiredFields(conf) {
         throw new Error('Missing node address');
     if (!conf.matcherAddress)
         throw new Error('Missing matcher address');
-    if (!conf.sucreioAddress)
-        throw new Error('Missing sucre address');
+    //    if (!conf.sucreioAddress) throw new Error('Missing sucre address');
 }
 exports.default = {
     getNetworkByte: function () {

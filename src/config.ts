@@ -10,7 +10,7 @@ function checkRequiredFields(conf) {
     if (!conf.networkByte) throw new Error('Missing network byte');
     if (!conf.nodeAddress) throw new Error('Missing node address');
     if (!conf.matcherAddress) throw new Error('Missing matcher address');
-    if (!conf.sucreioAddress) throw new Error('Missing sucre address');
+//    if (!conf.sucreioAddress) throw new Error('Missing sucre address');
 }
 
 
