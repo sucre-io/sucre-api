@@ -25,3 +25,4 @@ export const v1: IMatcherAPIv1 = {
     cancelOrder: v1Orderbooks.cancelOrder,
     deleteOrder: v1Orderbooks.deleteOrder
 };
+

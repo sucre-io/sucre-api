@@ -3,6 +3,7 @@ declare const _default: {
     getNetworkByte(): number;
     getNodeAddress(): string;
     getMatcherAddress(): string;
+    getSucreioAddress(): string;
     getMinimumSeedLength(): number;
     getRequestParams(): IHash<any>;
     getAssetFactory(): Function;
@@ -10,6 +11,7 @@ declare const _default: {
     get(): {
         networkByte: number;
         nodeAddress: string;
+        sucreioAddress: string;
         matcherAddress: string;
         assetFactory?: Function;
         minimumSeedLength: number;

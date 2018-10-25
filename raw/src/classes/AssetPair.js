@@ -10,7 +10,7 @@ function getAssetIds(assetOne, assetTwo) {
 }
 function getKey(part1, part2) {
     var parts = [part1, part2].sort();
-    return parts[0] + "_" + parts[1];
+    return parts[0] + "-" + parts[1];
 }
 function getMatcherPairOrder(assetOne, assetTwo) {
     return index_1.v1.getOrderbook(assetOne, assetTwo).then(function (orderbook) {

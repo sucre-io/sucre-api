@@ -1,8 +1,9 @@
 import { IAssetObject, IWavesBasicConfig, IWavesConfig } from '../interfaces';
-export declare const WAVES = "WAVES";
+export declare const WAVES = "SCR";
 export declare const WAVES_PROPS: IAssetObject;
 export declare const MAINNET_BYTE: number;
 export declare const TESTNET_BYTE: number;
+export declare const SUCREIO_BYTE: number;
 export declare const INITIAL_NONCE = 0;
 export declare const ADDRESS_VERSION = 1;
 export declare const ALIAS_VERSION = 2;
@@ -32,6 +33,7 @@ export declare const DEFAULT_MIN_SEED_LENGTH = 25;
 export declare const DEFAULT_ORDER_EXPIRATION_DAYS = 20;
 export declare const DEFAULT_BASIC_CONFIG: IWavesBasicConfig;
 export declare const DEFAULT_MAINNET_CONFIG: IWavesConfig;
+export declare const DEFAULT_SUCREIO_CONFIG: IWavesConfig;
 export declare const DEFAULT_TESTNET_CONFIG: IWavesConfig;
 export declare const WAVES_V1_ISSUE_TX: {
     assetId: string;

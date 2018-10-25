@@ -1,4 +1,4 @@
 declare const _default: {
-    get(): Promise<string>;
+    create(data: any): Promise<any>;
 };
 export default _default;

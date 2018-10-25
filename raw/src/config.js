@@ -18,6 +18,8 @@ function checkRequiredFields(conf) {
         throw new Error('Missing node address');
     if (!conf.matcherAddress)
         throw new Error('Missing matcher address');
+    if (!conf.sucreioAddress)
+        throw new Error('Missing sucre address');
 }
 exports.default = {
     getNetworkByte: function () {
@@ -28,6 +30,9 @@ exports.default = {
     },
     getMatcherAddress: function () {
         return config.matcherAddress;
+    },
+    getSucreioAddress: function () {
+        return config.sucreioAddress;
     },
     getMinimumSeedLength: function () {
         return config.minimumSeedLength;
@@ -55,6 +60,7 @@ exports.default = {
         Object.keys(newConfig).forEach(function (key) {
             switch (key) {
                 case 'nodeAddress':
+                case 'sucreioAddress':
                 case 'matcherAddress':
                     config[key] = request_1.normalizeHost(newConfig[key]);
                     break;

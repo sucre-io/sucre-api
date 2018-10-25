@@ -38,6 +38,7 @@ export interface IWavesBasicConfig {
 export interface IWavesConfig extends IWavesBasicConfig {
     networkByte: number;
     nodeAddress: string;
+    sucreioAddress: string;
     matcherAddress: string;
     assetFactory?: Function;
 }

@@ -4,11 +4,15 @@ import BigNumberLibrary from './libs/bignumber';
 import Seed from './classes/Seed';
 import * as byteProcessors from './classes/ByteProcessor';
 import { INodeAPIv1, INodeAPIv2 } from './api/node/index';
+import { ISucreioAPIv1 } from './api/sucreio/index';
 import { IMatcherAPIv1 } from './api/matcher/index';
 export interface IAPIVersions {
     Node: {
         v1: INodeAPIv1;
         v2: INodeAPIv2;
+    };
+    Sucreio: {
+        v1: ISucreioAPIv1;
     };
     Matcher: {
         v1: IMatcherAPIv1;
@@ -32,4 +36,5 @@ export interface IWavesAPI {
 export declare const BigNumber: typeof BigNumberLibrary;
 export declare function create(config: IWavesConfig): IWavesAPI;
 export declare const MAINNET_CONFIG: IWavesConfig;
+export declare const SUCREIO_CONFIG: IWavesConfig;
 export declare const TESTNET_CONFIG: IWavesConfig;
