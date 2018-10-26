@@ -1,12 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var Sucreio_1 = require("../../../classes/Sucreio");
 var request_1 = require("../../../utils/request");
+var remap_1 = require("../../../utils/remap");
+var accounts_x_1 = require("./accounts.x");
 var fetch = request_1.createFetchWrapper(2 /* SUCREIO */, 0 /* V1 */, request_1.processJSON);
+var preCreateAsync = function (data) { return accounts_x_1.accountSchema.parse(data); };
+var postCreate = remap_1.createRemapper({
+    type: null
+});
 exports.default = {
-    create: function (data) {
-        return fetch("/signup").then(function (res) {
-            return res;
-        });
-    },
+    create: request_1.wrapSucreioRequest(Sucreio_1.default.AccountCreation, preCreateAsync, postCreate, function (postParams) {
+        return fetch('/accounts', postParams);
+    }),
 };
 //# sourceMappingURL=accounts.js.map
