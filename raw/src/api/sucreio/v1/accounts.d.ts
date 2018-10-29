@@ -1,4 +1,6 @@
+import { TSucreioRequest } from '../../../utils/request';
 declare const _default: {
-    create(data: any): Promise<any>;
+    create: TSucreioRequest;
+    authenticate: TSucreioRequest;
 };
 export default _default;

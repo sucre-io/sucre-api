@@ -27,6 +27,8 @@ var hostResolvers = (_a = {},
     _a[key(1 /* MATCHER */, 0 /* V1 */)] = function () { return config_1.default.getMatcherAddress(); },
     _a);
 function normalizeHost(host) {
+    console.log("+++++++++++++++++++++++++++++++++++++++++");
+    console.log(host);
     return host.replace(/\/+$/, '');
 }
 exports.normalizeHost = normalizeHost;
@@ -73,5 +75,24 @@ function wrapTransactionRequest(TransactionConstructor, preRemapAsync, postRemap
     };
 }
 exports.wrapTransactionRequest = wrapTransactionRequest;
+function wrapSucreioRequest(ScureioConstructor, preRemapAsync, postRemap, callback) {
+    return function (data, keyPair) {
+        return preRemapAsync(__assign({}, data)).then(function (validatedData) {
+            var sucreio = new ScureioConstructor(validatedData);
+            return sucreio.prepareForAPI()
+                .then(postRemap)
+                .then(function (tx) {
+                return callback(__assign({}, exports.POST_TEMPLATE, { body: JSON.stringify(tx) }));
+            });
+        });
+    };
+}
+exports.wrapSucreioRequest = wrapSucreioRequest;
+function postRequest(url, data) {
+    return fetch_1.default(url, { method: 'POST', body: JSON.stringify(data), })
+        .then(function (res) { return res.json(); })
+        .then(function (json) { return console.log(json); });
+}
+exports.postRequest = postRequest;
 var _a;
 //# sourceMappingURL=request.js.map

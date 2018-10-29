@@ -1,6 +1,8 @@
 import { IHash, IKeyPair } from '../../interfaces';
 import { ITransactionClassConstructor } from '../classes/Transactions';
+import { IScureioClassConstructor } from '../classes/Sucreio';
 export declare type TTransactionRequest = (data: IHash<any>, keyPair: IKeyPair) => Promise<any>;
+export declare type TSucreioRequest = (data: IHash<any>, keyPair: IKeyPair) => Promise<any>;
 export interface IFetchWrapper<T> {
     (path: string, options?: IHash<any>): Promise<T>;
 }
@@ -24,3 +26,5 @@ export declare function normalizePath(path: any): string;
 export declare function processJSON(res: any): any;
 export declare function createFetchWrapper(product: PRODUCTS, version: VERSIONS, pipe?: Function): IFetchWrapper<any>;
 export declare function wrapTransactionRequest(TransactionConstructor: ITransactionClassConstructor, preRemapAsync: (data: IHash<any>) => Promise<IHash<any>>, postRemap: (data: IHash<any>) => IHash<any>, callback: (postParams: IHash<any>) => Promise<any>): (data: IHash<any>, keyPair: IKeyPair) => Promise<any>;
+export declare function wrapSucreioRequest(ScureioConstructor: IScureioClassConstructor, preRemapAsync: (data: IHash<any>) => Promise<IHash<any>>, postRemap: (data: IHash<any>) => IHash<any>, callback: (postParams: IHash<any>) => Promise<any>): (data: IHash<any>, keyPair: IKeyPair) => Promise<any>;
+export declare function postRequest(url: any, data: any): any;

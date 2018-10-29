@@ -1,5 +1,6 @@
 import { IHash, IKeyPair } from '../../interfaces';
 import { ITransactionClassConstructor } from '../classes/Transactions';
+import { IScureioClassConstructor } from '../classes/Sucreio';
 
 import WavesRequestError from '../errors/WavesRequestError';
 
@@ -8,6 +9,8 @@ import config from '../config';
 
 
 export type TTransactionRequest = (data: IHash<any>, keyPair: IKeyPair) => Promise<any>;
+export type TSucreioRequest = (data: IHash<any>, keyPair: IKeyPair) => Promise<any>;
+
 export interface IFetchWrapper<T> {
     (path: string, options?: IHash<any>): Promise<T>;
 }
@@ -38,6 +41,8 @@ const hostResolvers: IHash<() => string> = {
 
 
 export function normalizeHost(host): string {
+console.log("+++++++++++++++++++++++++++++++++++++++++");
+console.log(host);
     return host.replace(/\/+$/, '');
 }
 
@@ -108,4 +113,38 @@ export function wrapTransactionRequest(TransactionConstructor: ITransactionClass
 
     };
 
+}
+
+export function wrapSucreioRequest(ScureioConstructor: IScureioClassConstructor,
+                                       preRemapAsync: (data: IHash<any>) => Promise<IHash<any>>,
+                                       postRemap: (data: IHash<any>) => IHash<any>,
+                                       callback: (postParams: IHash<any>) => Promise<any>) {
+
+    return function (data: IHash<any>, keyPair: IKeyPair): Promise<any> {
+
+        return preRemapAsync({
+            ...data
+        }).then((validatedData) => {
+
+            const sucreio = new ScureioConstructor(validatedData);
+
+            return sucreio.prepareForAPI()
+                .then(postRemap)
+                .then((tx) => {
+                    return callback({
+                        ...POST_TEMPLATE,
+                        body: JSON.stringify(tx)
+                    });
+                });
+
+        });
+
+    };
+
+}
+
+export function postRequest(url, data) {
+  return fetch(url, { method: 'POST', body: JSON.stringify(data), })
+      .then(res => res.json())
+      .then(json => console.log(json));
 }
