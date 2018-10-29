@@ -5,6 +5,7 @@ import v1Accounts from './v1/accounts';
 export interface ISucreioAPIv1 {
     accounts: {
         create(data: IHash<any>, keyPair: IKeyPair): Promise<any>;
+        authenticate(data: IHash<any>, keyPair: IKeyPair): Promise<any>;
     },
 
 }

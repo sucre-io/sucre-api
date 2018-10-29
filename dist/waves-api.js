@@ -14318,7 +14318,10 @@ var postCreate = remap_1.createRemapper({
 });
 exports.default = {
     create: request_1.wrapSucreioRequest(Sucreio_1.default.AccountCreation, preCreateAsync, postCreate, function (postParams) {
-        return fetch('/accounts', postParams);
+        return fetch('/api/v1/accounts', postParams);
+    }),
+    authenticate: request_1.wrapSucreioRequest(Sucreio_1.default.AccountCreation, preCreateAsync, postCreate, function (postParams) {
+        return fetch('/api/v1/authenticate', postParams);
     }),
 };
 
@@ -14336,7 +14339,7 @@ exports.accountSchema = new ts_api_validator_1.Schema({
         },
         first_name: {
             type: ts_api_validator_1.StringPart,
-            required: true
+            required: false
         },
         last_name: {
             type: ts_api_validator_1.StringPart,
@@ -14477,7 +14480,7 @@ function getAssetIds(assetOne, assetTwo) {
 }
 function getKey(part1, part2) {
     var parts = [part1, part2].sort();
-    return parts[0] + "_" + parts[1];
+    return parts[0] + "-" + parts[1];
 }
 function getMatcherPairOrder(assetOne, assetTwo) {
     return index_1.v1.getOrderbook(assetOne, assetTwo).then(function (orderbook) {
@@ -15471,7 +15474,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WAVES = 'WAVES';
+exports.WAVES = 'SCR';
 exports.WAVES_PROPS = {
     id: exports.WAVES,
     name: 'SCR',
@@ -15514,9 +15517,9 @@ exports.DEFAULT_BASIC_CONFIG = {
     requestLimit: 100,
     logLevel: 'warning'
 };
-exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.wavesnodes.com', sucreioAddress: 'https://port.sucreapi.com', matcherAddress: 'https://nodes.wavesnodes.com/matcher' });
-exports.DEFAULT_SUCREIO_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.SUCREIO_BYTE, nodeAddress: 'https://node.pongo.online', sucreioAddress: 'https://port.sucreapi.com', matcherAddress: 'https://node.pongo.online/matcher' });
-exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.wavesnodes.com', sucreioAddress: 'https://port.sucreapi.com', matcherAddress: 'https://testnet1.wavesnodes.com/matcher' });
+exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.wavesnodes.com', sucreioAddress: 'https://api.sucre.io', matcherAddress: 'https://nodes.wavesnodes.com/matcher' });
+exports.DEFAULT_SUCREIO_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.SUCREIO_BYTE, nodeAddress: 'https://node.pongo.online', sucreioAddress: 'https://api.sucre.io', matcherAddress: 'https://node.pongo.online/matcher' });
+exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.wavesnodes.com', sucreioAddress: 'https://api.sucre.io', matcherAddress: 'https://testnet1.wavesnodes.com/matcher' });
 exports.WAVES_V1_ISSUE_TX = {
     assetId: exports.WAVES,
     decimals: 8,
@@ -18758,6 +18761,8 @@ var hostResolvers = (_a = {},
     _a[key(1 /* MATCHER */, 0 /* V1 */)] = function () { return config_1.default.getMatcherAddress(); },
     _a);
 function normalizeHost(host) {
+    console.log("+++++++++++++++++++++++++++++++++++++++++");
+    console.log(host);
     return host.replace(/\/+$/, '');
 }
 exports.normalizeHost = normalizeHost;

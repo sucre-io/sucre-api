@@ -11,7 +11,10 @@ var postCreate = remap_1.createRemapper({
 });
 exports.default = {
     create: request_1.wrapSucreioRequest(Sucreio_1.default.AccountCreation, preCreateAsync, postCreate, function (postParams) {
-        return fetch('/accounts', postParams);
+        return fetch('/api/v1/accounts', postParams);
+    }),
+    authenticate: request_1.wrapSucreioRequest(Sucreio_1.default.AccountCreation, preCreateAsync, postCreate, function (postParams) {
+        return fetch('/api/v1/authenticate', postParams);
     }),
 };
 //# sourceMappingURL=accounts.js.map

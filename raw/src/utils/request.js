@@ -27,6 +27,8 @@ var hostResolvers = (_a = {},
     _a[key(1 /* MATCHER */, 0 /* V1 */)] = function () { return config_1.default.getMatcherAddress(); },
     _a);
 function normalizeHost(host) {
+    console.log("+++++++++++++++++++++++++++++++++++++++++");
+    console.log(host);
     return host.replace(/\/+$/, '');
 }
 exports.normalizeHost = normalizeHost;

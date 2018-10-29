@@ -1,5 +1,5 @@
 import { IAssetObject, IWavesBasicConfig, IWavesConfig } from '../interfaces';
-export declare const WAVES = "WAVES";
+export declare const WAVES = "SCR";
 export declare const WAVES_PROPS: IAssetObject;
 export declare const MAINNET_BYTE: number;
 export declare const TESTNET_BYTE: number;

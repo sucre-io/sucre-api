@@ -41,6 +41,8 @@ const hostResolvers: IHash<() => string> = {
 
 
 export function normalizeHost(host): string {
+console.log("+++++++++++++++++++++++++++++++++++++++++");
+console.log(host);
     return host.replace(/\/+$/, '');
 }
 

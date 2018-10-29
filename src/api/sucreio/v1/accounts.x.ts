@@ -11,7 +11,7 @@ export const accountSchema = new Schema({
       },
       first_name: {
           type: StringPart,
-          required: true
+          required: false
       },
       last_name: {
           type: StringPart,

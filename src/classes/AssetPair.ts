@@ -5,7 +5,6 @@ import { v1 as MatcherAPIv1 } from '../api/matcher/index';
 import { getStorage } from '../utils/storage';
 import Asset from './Asset';
 
-
 function getAssetIds(assetOne, assetTwo) {
     assetOne = Asset.isAsset(assetOne) ? assetOne.id : assetOne;
     assetTwo = Asset.isAsset(assetTwo) ? assetTwo.id : assetTwo;
@@ -14,7 +13,7 @@ function getAssetIds(assetOne, assetTwo) {
 
 function getKey(part1, part2) {
     const parts = [part1, part2].sort();
-    return `${parts[0]}_${parts[1]}`;
+    return `${parts[0]}-${parts[1]}`;
 }
 
 function getMatcherPairOrder(assetOne, assetTwo) {

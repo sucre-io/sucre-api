@@ -11,7 +11,7 @@ exports.accountSchema = new ts_api_validator_1.Schema({
         },
         first_name: {
             type: ts_api_validator_1.StringPart,
-            required: true
+            required: false
         },
         last_name: {
             type: ts_api_validator_1.StringPart,
