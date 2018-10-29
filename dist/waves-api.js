@@ -12983,7 +12983,7 @@ exports.MAINNET_CONFIG = constants.DEFAULT_MAINNET_CONFIG;
 exports.SUCREIO_CONFIG = constants.DEFAULT_SUCREIO_CONFIG;
 exports.TESTNET_CONFIG = constants.DEFAULT_TESTNET_CONFIG;
 
-},{"./api/matcher/index":61,"./api/node/index":65,"./api/sucreio/index":90,"./classes/Asset":92,"./classes/AssetPair":93,"./classes/ByteProcessor":94,"./classes/Money":95,"./classes/OrderPrice":96,"./classes/Seed":97,"./classes/Transactions":98,"./config":99,"./constants":100,"./libs/bignumber":105,"./tools":112,"./utils/crypto":115,"./utils/request":118,"./utils/storage":119}],61:[function(require,module,exports){
+},{"./api/matcher/index":61,"./api/node/index":65,"./api/sucreio/index":90,"./classes/Asset":93,"./classes/AssetPair":94,"./classes/ByteProcessor":95,"./classes/Money":96,"./classes/OrderPrice":97,"./classes/Seed":98,"./classes/Transactions":100,"./config":101,"./constants":102,"./libs/bignumber":107,"./tools":114,"./utils/crypto":117,"./utils/request":120,"./utils/storage":121}],61:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var info_1 = require("./v1/info");
@@ -13010,7 +13010,7 @@ exports.default = {
     }
 };
 
-},{"../../../utils/request":118}],63:[function(require,module,exports){
+},{"../../../utils/request":120}],63:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -13104,7 +13104,7 @@ exports.default = {
     deleteOrder: generateCancelLikeRequest('delete')
 };
 
-},{"../../../classes/ByteProcessor":94,"../../../classes/Transactions":98,"../../../utils/remap":117,"../../../utils/request":118,"./orderbooks.x":64}],64:[function(require,module,exports){
+},{"../../../classes/ByteProcessor":95,"../../../classes/Transactions":100,"../../../utils/remap":119,"../../../utils/request":120,"./orderbooks.x":64}],64:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13151,7 +13151,7 @@ exports.createOrderSchema = new ts_api_validator_1.Schema({
     }
 });
 
-},{"../../../constants":100,"../../schemaFields":87,"ts-api-validator":39}],65:[function(require,module,exports){
+},{"../../../constants":102,"../../schemaFields":87,"ts-api-validator":39}],65:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var addresses_1 = require("./v1/addresses");
@@ -13196,7 +13196,7 @@ exports.default = {
     }
 };
 
-},{"../../../utils/request":118}],67:[function(require,module,exports){
+},{"../../../utils/request":120}],67:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Transactions_1 = require("../../../classes/Transactions");
@@ -13220,7 +13220,7 @@ exports.default = {
     })
 };
 
-},{"../../../classes/Transactions":98,"../../../utils/remap":117,"../../../utils/request":118,"./aliases.x":68}],68:[function(require,module,exports){
+},{"../../../classes/Transactions":100,"../../../utils/remap":119,"../../../utils/request":120,"./aliases.x":68}],68:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13252,7 +13252,7 @@ exports.createAliasSchema = new ts_api_validator_1.Schema({
     }
 });
 
-},{"../../../constants":100,"../../../utils/remap":117,"ts-api-validator":39}],69:[function(require,module,exports){
+},{"../../../constants":102,"../../../utils/remap":119,"ts-api-validator":39}],69:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Transactions_1 = require("../../../classes/Transactions");
@@ -13310,7 +13310,7 @@ exports.default = {
     })
 };
 
-},{"../../../classes/Transactions":98,"../../../constants":100,"../../../utils/remap":117,"../../../utils/request":118,"./addresses":66,"./assets.x":70}],70:[function(require,module,exports){
+},{"../../../classes/Transactions":100,"../../../constants":102,"../../../utils/remap":119,"../../../utils/request":120,"./addresses":66,"./assets.x":70}],70:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13401,7 +13401,7 @@ exports.burnSchema = new ts_api_validator_1.Schema({
     }
 });
 
-},{"../../../constants":100,"../../../utils/remap":117,"../../schemaFields":87,"ts-api-validator":39}],71:[function(require,module,exports){
+},{"../../../constants":102,"../../../utils/remap":119,"../../schemaFields":87,"ts-api-validator":39}],71:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var request_1 = require("../../../utils/request");
@@ -13424,7 +13424,7 @@ exports.default = {
     }
 };
 
-},{"../../../utils/request":118}],72:[function(require,module,exports){
+},{"../../../utils/request":120}],72:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Transactions_1 = require("../../../classes/Transactions");
@@ -13450,7 +13450,7 @@ exports.default = {
     })
 };
 
-},{"../../../classes/Transactions":98,"../../../utils/remap":117,"../../../utils/request":118,"./leasing.x":73}],73:[function(require,module,exports){
+},{"../../../classes/Transactions":100,"../../../utils/remap":119,"../../../utils/request":120,"./leasing.x":73}],73:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13515,7 +13515,7 @@ exports.default = {
     }
 };
 
-},{"../../../config":99,"../../../constants":100,"../../../utils/request":118}],75:[function(require,module,exports){
+},{"../../../config":101,"../../../constants":102,"../../../utils/request":120}],75:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Asset_1 = require("../../../classes/Asset");
@@ -13549,7 +13549,7 @@ exports.default = {
     }
 };
 
-},{"../../../classes/Asset":92,"../../../classes/Money":95}],76:[function(require,module,exports){
+},{"../../../classes/Asset":93,"../../../classes/Money":96}],76:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants = require("../../../constants");
@@ -13576,7 +13576,7 @@ exports.default = {
 };
 var _a;
 
-},{"../../../constants":100}],77:[function(require,module,exports){
+},{"../../../constants":102}],77:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var logger_1 = require("../../../utils/logger");
@@ -13586,7 +13586,7 @@ function default_1(message) {
 }
 exports.default = default_1;
 
-},{"../../../utils/logger":116}],78:[function(require,module,exports){
+},{"../../../utils/logger":118}],78:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var schemas = require("./addresses.x");
@@ -13689,7 +13689,7 @@ exports.default = {
     }
 };
 
-},{"../../../classes/Money":95,"../../../constants":100,"../../schemaTools":89,"../v1/addresses":66,"../v1/aliases":67,"../v1/assets":69,"../v1/transactions":74,"./_combiners":75,"./_filters":76,"./_warn":77,"./addresses.x":79}],79:[function(require,module,exports){
+},{"../../../classes/Money":96,"../../../constants":102,"../../schemaTools":89,"../v1/addresses":66,"../v1/aliases":67,"../v1/assets":69,"../v1/transactions":74,"./_combiners":75,"./_filters":76,"./_warn":77,"./addresses.x":79}],79:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -13768,7 +13768,7 @@ exports.assetBalancesSchema = new ts_api_validator_1.Schema({
     }
 });
 
-},{"../../../constants":100,"../../../utils/remap":117,"../../schema.MoneyPart":84,"../../schemaTemporaryTools":88,"ts-api-validator":39}],80:[function(require,module,exports){
+},{"../../../constants":102,"../../../utils/remap":119,"../../schema.MoneyPart":84,"../../schemaTemporaryTools":88,"ts-api-validator":39}],80:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var aliases_1 = require("../v1/aliases");
@@ -13833,7 +13833,7 @@ exports.default = {
     }
 };
 
-},{"../../../constants":100,"../../schemaTools":89,"../v1/transactions":74}],83:[function(require,module,exports){
+},{"../../../constants":102,"../../schemaTools":89,"../v1/transactions":74}],83:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -13868,7 +13868,7 @@ var Base58Part = /** @class */ (function (_super) {
 }(ts_api_validator_1.BasePart));
 exports.Base58Part = Base58Part;
 
-},{"../libs/base58":104,"../libs/converters":107,"ts-api-validator":39}],84:[function(require,module,exports){
+},{"../libs/base58":106,"../libs/converters":109,"ts-api-validator":39}],84:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -13919,7 +13919,7 @@ var MoneyPart = /** @class */ (function (_super) {
 }(ts_api_validator_1.BasePart));
 exports.MoneyPart = MoneyPart;
 
-},{"../classes/Money":95,"../utils/remap":117,"ts-api-validator":39,"ts-utils":50}],85:[function(require,module,exports){
+},{"../classes/Money":96,"../utils/remap":119,"ts-api-validator":39,"ts-utils":50}],85:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -13980,7 +13980,7 @@ var OrderPricePart = /** @class */ (function (_super) {
 }(ts_api_validator_1.BasePart));
 exports.OrderPricePart = OrderPricePart;
 
-},{"../classes/OrderPrice":96,"../utils/remap":117,"ts-api-validator":39,"ts-utils":50}],86:[function(require,module,exports){
+},{"../classes/OrderPrice":97,"../utils/remap":119,"ts-api-validator":39,"ts-utils":50}],86:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -14199,7 +14199,7 @@ exports.createAliasTransactionSchema = new ts_api_validator_1.Schema({
     content: __assign({}, getTxCommonFields(constants.CREATE_ALIAS_TX_NAME, true), { alias: getTxAlias() })
 });
 
-},{"../constants":100,"../utils/remap":117,"./schema.Base58Part":83,"./schema.MoneyPart":84,"./schema.OrderPricePart":85,"./schemaTemporaryTools":88,"ts-api-validator":39}],87:[function(require,module,exports){
+},{"../constants":102,"../utils/remap":119,"./schema.Base58Part":83,"./schema.MoneyPart":84,"./schema.OrderPricePart":85,"./schemaTemporaryTools":88,"ts-api-validator":39}],87:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ts_api_validator_1 = require("ts-api-validator");
@@ -14246,7 +14246,7 @@ exports.default = {
     }
 };
 
-},{"../constants":100,"../utils/remap":117,"ts-api-validator":39}],88:[function(require,module,exports){
+},{"../constants":102,"../utils/remap":119,"ts-api-validator":39}],88:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function stub(partType) {
@@ -14296,7 +14296,7 @@ function siftTransaction(transaction) {
 }
 exports.siftTransaction = siftTransaction;
 
-},{"../constants":100,"./schema.transactions":86}],90:[function(require,module,exports){
+},{"../constants":102,"./schema.transactions":86}],90:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var accounts_1 = require("./v1/accounts");
@@ -14307,17 +14307,61 @@ exports.v1 = {
 },{"./v1/accounts":91}],91:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var Sucreio_1 = require("../../../classes/Sucreio");
 var request_1 = require("../../../utils/request");
+var remap_1 = require("../../../utils/remap");
+var accounts_x_1 = require("./accounts.x");
 var fetch = request_1.createFetchWrapper(2 /* SUCREIO */, 0 /* V1 */, request_1.processJSON);
+var preCreateAsync = function (data) { return accounts_x_1.accountSchema.parse(data); };
+var postCreate = remap_1.createRemapper({
+    type: null
+});
 exports.default = {
-    create: function (data) {
-        return fetch("/signup").then(function (res) {
-            return res;
-        });
-    },
+    create: request_1.wrapSucreioRequest(Sucreio_1.default.AccountCreation, preCreateAsync, postCreate, function (postParams) {
+        return fetch('/accounts', postParams);
+    }),
 };
 
-},{"../../../utils/request":118}],92:[function(require,module,exports){
+},{"../../../classes/Sucreio":99,"../../../utils/remap":119,"../../../utils/request":120,"./accounts.x":92}],92:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var ts_api_validator_1 = require("ts-api-validator");
+exports.accountSchema = new ts_api_validator_1.Schema({
+    type: ts_api_validator_1.ObjectPart,
+    required: false,
+    content: {
+        email: {
+            type: ts_api_validator_1.StringPart,
+            required: true
+        },
+        first_name: {
+            type: ts_api_validator_1.StringPart,
+            required: true
+        },
+        last_name: {
+            type: ts_api_validator_1.StringPart,
+            required: false
+        },
+        phone: {
+            type: ts_api_validator_1.StringPart,
+            required: false
+        },
+        company_name: {
+            type: ts_api_validator_1.StringPart,
+            required: false
+        },
+        password: {
+            type: ts_api_validator_1.StringPart,
+            required: true
+        },
+        registration_ip_address: {
+            type: ts_api_validator_1.StringPart,
+            required: false
+        }
+    }
+});
+
+},{"ts-api-validator":39}],93:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var storage_1 = require("../utils/storage");
@@ -14420,7 +14464,7 @@ var Asset = /** @class */ (function () {
 }());
 exports.default = Asset;
 
-},{"../api/node/index":65,"../config":99,"../constants":100,"../utils/storage":119}],93:[function(require,module,exports){
+},{"../api/node/index":65,"../config":101,"../constants":102,"../utils/storage":121}],94:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("../api/matcher/index");
@@ -14490,7 +14534,7 @@ exports.default = {
     }
 };
 
-},{"../api/matcher/index":61,"../utils/storage":119,"./Asset":92}],94:[function(require,module,exports){
+},{"../api/matcher/index":61,"../utils/storage":121,"./Asset":93}],95:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -14686,7 +14730,7 @@ var Recipient = /** @class */ (function (_super) {
 }(ByteProcessor));
 exports.Recipient = Recipient;
 
-},{"../config":99,"../constants":100,"../libs/base58":104,"../utils/concat":113,"../utils/convert":114}],95:[function(require,module,exports){
+},{"../config":101,"../constants":102,"../libs/base58":106,"../utils/concat":115,"../utils/convert":116}],96:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var bignumber_1 = require("../libs/bignumber");
@@ -14822,7 +14866,7 @@ var Money = /** @class */ (function () {
 }());
 exports.default = Money;
 
-},{"../libs/bignumber":105,"./Asset":92}],96:[function(require,module,exports){
+},{"../libs/bignumber":107,"./Asset":93}],97:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var bignumber_1 = require("../libs/bignumber");
@@ -14902,7 +14946,7 @@ var OrderPrice = /** @class */ (function () {
 }());
 exports.default = OrderPrice;
 
-},{"../libs/bignumber":105,"./AssetPair":93}],97:[function(require,module,exports){
+},{"../libs/bignumber":107,"./AssetPair":94}],98:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var base58_1 = require("../libs/base58");
@@ -14987,7 +15031,119 @@ exports.default = {
     decryptSeedPhrase: decryptSeedPhrase
 };
 
-},{"../config":99,"../libs/base58":104,"../seedDictionary":111,"../utils/crypto":115,"../utils/logger":116}],98:[function(require,module,exports){
+},{"../config":101,"../libs/base58":106,"../seedDictionary":113,"../utils/crypto":117,"../utils/logger":118}],99:[function(require,module,exports){
+"use strict";
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var ByteProcessor_1 = require("./ByteProcessor");
+var config_1 = require("../config");
+function createScureioClass(txType, fields, apiSchema) {
+    if (!fields || !fields.length) {
+        throw new Error('It is not possible to create ScureioClass without fields');
+    }
+    // Fields of the original data object
+    var storedFields = Object.create(null);
+    // Data bytes or functions returning data bytes via promises
+    var byteProviders = [];
+    fields.forEach(function (field) {
+        if (field instanceof ByteProcessor_1.ByteProcessor) {
+            // Remember user data fields
+            storedFields[field.name] = field;
+            // All user data must be represented as bytes
+            byteProviders.push(function (data) { return field.process(data[field.name]); });
+        }
+        else if (typeof field === 'number') {
+            // All static data must be converted to bytes as well
+            byteProviders.push(Uint8Array.from([field]));
+        }
+        else {
+            throw new Error('Invalid field is passed to the createScureioClass function');
+        }
+    });
+    var ScureioClass = /** @class */ (function () {
+        function ScureioClass(hashMap) {
+            if (hashMap === void 0) { hashMap = {}; }
+            var _this = this;
+            // Save all needed values from user data
+            this._rawData = Object.keys(storedFields).reduce(function (store, key) {
+                store[key] = hashMap[key];
+                return store;
+            }, {});
+            this._dataHolders = byteProviders.map(function (provider) {
+                if (typeof provider === 'function') {
+                    // Execute function so that they return promises containing Uint8Array data
+                    return provider(_this._rawData);
+                }
+                else {
+                    // Or just pass Uint8Array data
+                    return provider;
+                }
+            });
+        }
+        // Process the data so it's ready for usage in API
+        ScureioClass.prototype.prepareForAPI = function () {
+            return this._castToAPISchema(this._rawData).then(function (schemedData) { return (__assign({}, (txType ? { ScureioType: txType } : {}), schemedData)); });
+        };
+        ScureioClass.prototype._castToAPISchema = function (data) {
+            var _this = this;
+            if (!apiSchema)
+                return Promise.resolve(__assign({}, data));
+            // Generate an array of promises wielding the schemed data
+            var transforms = Object.keys(apiSchema).map(function (key) {
+                var rule = apiSchema[key];
+                if (rule.from === 'raw' && rule.to === 'prefixed') {
+                    return _this._castFromRawToPrefixed(key);
+                }
+            });
+            return Promise.all(transforms).then(function (schemedParts) {
+                return schemedParts.reduce(function (result, part) {
+                    return __assign({}, result, part);
+                }, __assign({}, data));
+            });
+        };
+        ScureioClass.prototype._castFromRawToPrefixed = function (key) {
+            var type = key;
+            if (type === 'recipient') {
+                type = this._rawData[key].length <= 30 ? 'alias' : 'address';
+            }
+            var prefix;
+            if (type === 'address') {
+                prefix = 'address:';
+            }
+            else if (type === 'alias') {
+                var networkCharacter = String.fromCharCode(config_1.default.getNetworkByte());
+                prefix = 'alias:' + networkCharacter + ':';
+            }
+            else {
+                throw new Error("There is no type '" + type + "' to be prefixed");
+            }
+            return Promise.resolve((_a = {}, _a[key] = prefix + this._rawData[key], _a));
+            var _a;
+        };
+        return ScureioClass;
+    }());
+    return ScureioClass;
+}
+exports.default = {
+    AccountCreation: createScureioClass(null, [
+        new ByteProcessor_1.StringWithLength('email'),
+        new ByteProcessor_1.StringWithLength('first_name'),
+        new ByteProcessor_1.StringWithLength('last_name'),
+        new ByteProcessor_1.StringWithLength('phone'),
+        new ByteProcessor_1.StringWithLength('company_name'),
+        new ByteProcessor_1.StringWithLength('password'),
+        new ByteProcessor_1.StringWithLength('registration_ip_address')
+    ])
+};
+
+},{"../config":101,"./ByteProcessor":95}],100:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -15223,7 +15379,7 @@ exports.default = {
     }
 };
 
-},{"../config":99,"../constants":100,"../libs/base58":104,"../utils/concat":113,"../utils/crypto":115,"./ByteProcessor":94}],99:[function(require,module,exports){
+},{"../config":101,"../constants":102,"../libs/base58":106,"../utils/concat":115,"../utils/crypto":117,"./ByteProcessor":95}],101:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -15304,7 +15460,7 @@ exports.default = {
     }
 };
 
-},{"./constants":100,"./utils/request":118}],100:[function(require,module,exports){
+},{"./constants":102,"./utils/request":120}],102:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -15358,9 +15514,9 @@ exports.DEFAULT_BASIC_CONFIG = {
     requestLimit: 100,
     logLevel: 'warning'
 };
-exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.wavesnodes.com', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://nodes.wavesnodes.com/matcher' });
-exports.DEFAULT_SUCREIO_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.SUCREIO_BYTE, nodeAddress: 'https://node.pongo.online', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://node.pongo.online/matcher' });
-exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.wavesnodes.com', sucreioAddress: 'https://104.248.7.158:9636', matcherAddress: 'https://testnet1.wavesnodes.com/matcher' });
+exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.wavesnodes.com', sucreioAddress: 'https://port.sucreapi.com', matcherAddress: 'https://nodes.wavesnodes.com/matcher' });
+exports.DEFAULT_SUCREIO_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.SUCREIO_BYTE, nodeAddress: 'https://node.pongo.online', sucreioAddress: 'https://port.sucreapi.com', matcherAddress: 'https://node.pongo.online/matcher' });
+exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.wavesnodes.com', sucreioAddress: 'https://port.sucreapi.com', matcherAddress: 'https://testnet1.wavesnodes.com/matcher' });
 exports.WAVES_V1_ISSUE_TX = {
     assetId: exports.WAVES,
     decimals: 8,
@@ -15378,7 +15534,7 @@ exports.WAVES_V1_ISSUE_TX = {
     type: exports.ISSUE_TX
 };
 
-},{}],101:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -15425,7 +15581,7 @@ var WavesError = /** @class */ (function (_super) {
 }(Error));
 exports.default = WavesError;
 
-},{}],102:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -15462,7 +15618,7 @@ var WavesRequestError = /** @class */ (function (_super) {
 }(WavesError_1.default));
 exports.default = WavesRequestError;
 
-},{"./WavesError":101}],103:[function(require,module,exports){
+},{"./WavesError":103}],105:[function(require,module,exports){
 "use strict";
 // Curve25519 signatures (and also key agreement)
 // like in the early Axolotl.
@@ -16838,7 +16994,7 @@ axlsign.generateKeyPair = function (seed) {
 };
 exports.default = axlsign;
 
-},{}],104:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
@@ -16905,7 +17061,7 @@ exports.default = {
     }
 };
 
-},{}],105:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var bignumber_js_1 = require("bignumber.js");
@@ -16914,7 +17070,7 @@ bignumber_js_1.default.config({
 });
 exports.default = bignumber_js_1.default;
 
-},{"bignumber.js":2}],106:[function(require,module,exports){
+},{"bignumber.js":2}],108:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -17231,7 +17387,7 @@ function blake2bHex(input, key, outlen) {
 exports.blake2bHex = blake2bHex;
 
 }).call(this,require("buffer").Buffer)
-},{"../utils/logger":116,"buffer":3}],107:[function(require,module,exports){
+},{"../utils/logger":118,"buffer":3}],109:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var CryptoJS = require("crypto-js");
@@ -17513,7 +17669,7 @@ var converters = function () {
 /** END OF THE LICENSED CODE */
 exports.default = converters;
 
-},{"crypto-js":12}],108:[function(require,module,exports){
+},{"crypto-js":12}],110:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var fetchSubstitute = (function () {
@@ -17532,7 +17688,7 @@ var fetchSubstitute = (function () {
 })();
 exports.default = fetchSubstitute;
 
-},{"node-fetch":undefined}],109:[function(require,module,exports){
+},{"node-fetch":undefined}],111:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -17601,7 +17757,7 @@ exports.default = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":3,"crypto":undefined}],110:[function(require,module,exports){
+},{"buffer":3,"crypto":undefined}],112:[function(require,module,exports){
 "use strict";
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
@@ -18044,7 +18200,7 @@ var f = function (s) {
 };
 exports.keccak256 = methods.keccak_256;
 
-},{}],111:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = [
@@ -18234,7 +18390,7 @@ exports.default = [
     'wrist', 'write', 'wrong', 'yard', 'year', 'yellow', 'you', 'young', 'youth', 'zebra', 'zero', 'zone', 'zoo'
 ];
 
-},{}],112:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var base58_1 = require("./libs/base58");
@@ -18252,7 +18408,7 @@ exports.default = {
     siftTransaction: schemaTools_1.siftTransaction
 };
 
-},{"./api/schemaTools":89,"./libs/base58":104,"./utils/crypto":115}],113:[function(require,module,exports){
+},{"./api/schemaTools":89,"./libs/base58":106,"./utils/crypto":117}],115:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function concatUint8Arrays() {
@@ -18278,7 +18434,7 @@ function concatUint8Arrays() {
 }
 exports.concatUint8Arrays = concatUint8Arrays;
 
-},{}],114:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var converters_1 = require("../libs/converters");
@@ -18329,7 +18485,7 @@ exports.default = {
     }
 };
 
-},{"../libs/converters":107}],115:[function(require,module,exports){
+},{"../libs/converters":109}],117:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var CryptoJS = require("crypto-js");
@@ -18474,7 +18630,7 @@ exports.default = {
     }
 };
 
-},{"../config":99,"../constants":100,"../libs/axlsign":103,"../libs/base58":104,"../libs/blake2b":106,"../libs/converters":107,"../libs/secure-random":109,"../libs/sha3":110,"./concat":113,"crypto-js":12}],116:[function(require,module,exports){
+},{"../config":101,"../constants":102,"../libs/axlsign":105,"../libs/base58":106,"../libs/blake2b":108,"../libs/converters":109,"../libs/secure-random":111,"../libs/sha3":112,"./concat":115,"crypto-js":12}],118:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var config_1 = require("../config");
@@ -18502,7 +18658,7 @@ exports.default = {
     }
 };
 
-},{"../config":99}],117:[function(require,module,exports){
+},{"../config":101}],119:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants = require("../constants");
@@ -18572,7 +18728,7 @@ function createRemapper(rules) {
 }
 exports.createRemapper = createRemapper;
 
-},{"../constants":100}],118:[function(require,module,exports){
+},{"../constants":102}],120:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -18648,9 +18804,28 @@ function wrapTransactionRequest(TransactionConstructor, preRemapAsync, postRemap
     };
 }
 exports.wrapTransactionRequest = wrapTransactionRequest;
+function wrapSucreioRequest(ScureioConstructor, preRemapAsync, postRemap, callback) {
+    return function (data, keyPair) {
+        return preRemapAsync(__assign({}, data)).then(function (validatedData) {
+            var sucreio = new ScureioConstructor(validatedData);
+            return sucreio.prepareForAPI()
+                .then(postRemap)
+                .then(function (tx) {
+                return callback(__assign({}, exports.POST_TEMPLATE, { body: JSON.stringify(tx) }));
+            });
+        });
+    };
+}
+exports.wrapSucreioRequest = wrapSucreioRequest;
+function postRequest(url, data) {
+    return fetch_1.default(url, { method: 'POST', body: JSON.stringify(data), })
+        .then(function (res) { return res.json(); })
+        .then(function (json) { return console.log(json); });
+}
+exports.postRequest = postRequest;
 var _a;
 
-},{"../config":99,"../errors/WavesRequestError":102,"../libs/fetch":108}],119:[function(require,module,exports){
+},{"../config":101,"../errors/WavesRequestError":104,"../libs/fetch":110}],121:[function(require,module,exports){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -18732,5 +18907,5 @@ function getStorage(init) {
 }
 exports.getStorage = getStorage;
 
-},{"../config":99}]},{},[60])(60)
+},{"../config":101}]},{},[60])(60)
 });
