@@ -6,5 +6,6 @@ export interface IScureioClassConstructor {
 }
 declare const _default: {
     AccountCreation: IScureioClassConstructor;
+    PostCreation: IScureioClassConstructor;
 };
 export default _default;
