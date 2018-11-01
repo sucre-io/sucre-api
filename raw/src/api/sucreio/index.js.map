@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../src/api/sucreio/index.ts"],"names":[],"mappings":";;AAEA,0CAAuC;AACvC,oCAAiC;AAcpB,QAAA,EAAE,GAAkB;IAC/B,QAAQ,EAAE,kBAAU;IACpB,KAAK,EAAE,eAAO;CACf,CAAC"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../src/api/sucreio/index.ts"],"names":[],"mappings":";;AAEA,0CAAuC;AACvC,oCAAiC;AAepB,QAAA,EAAE,GAAkB;IAC/B,QAAQ,EAAE,kBAAU;IACpB,KAAK,EAAE,eAAO;CACf,CAAC"}

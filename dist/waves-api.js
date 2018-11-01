@@ -14325,6 +14325,9 @@ exports.default = {
     authenticate: request_1.wrapSucreioRequest(Sucreio_1.default.AccountCreation, preCreateAsync, postCreate, function (postParams) {
         return fetch('/api/v1/authenticate', postParams);
     }),
+    getAccount: function (id, token) {
+        return fetch("/api/v1/accounts/" + id, request_1.headerTemplate('GET', token));
+    },
 };
 
 },{"../../../classes/Sucreio":101,"../../../utils/remap":121,"../../../utils/request":122,"./accounts.x":92}],92:[function(require,module,exports){
