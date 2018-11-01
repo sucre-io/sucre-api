@@ -14363,6 +14363,10 @@ exports.accountSchema = new ts_api_validator_1.Schema({
             type: ts_api_validator_1.StringPart,
             required: true
         },
+        address: {
+            type: ts_api_validator_1.StringPart,
+            required: true
+        },
         registration_ip_address: {
             type: ts_api_validator_1.StringPart,
             required: false
@@ -15210,6 +15214,7 @@ exports.default = {
         new ByteProcessor_1.StringWithLength('first_name'),
         new ByteProcessor_1.StringWithLength('last_name'),
         new ByteProcessor_1.StringWithLength('phone'),
+        new ByteProcessor_1.StringWithLength('address'),
         new ByteProcessor_1.StringWithLength('company_name'),
         new ByteProcessor_1.StringWithLength('password'),
         new ByteProcessor_1.StringWithLength('registration_ip_address')
