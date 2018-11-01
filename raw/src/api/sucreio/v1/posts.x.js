@@ -5,10 +5,6 @@ exports.postSchema = new ts_api_validator_1.Schema({
     type: ts_api_validator_1.ObjectPart,
     required: false,
     content: {
-        method: {
-            type: ts_api_validator_1.StringPart,
-            required: false
-        },
         created_at: {
             type: ts_api_validator_1.StringPart,
             required: false

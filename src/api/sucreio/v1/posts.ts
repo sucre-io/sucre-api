@@ -8,8 +8,7 @@ const fetch = createFetchWrapper(PRODUCTS.SUCREIO, VERSIONS.V1, processJSON);
 
 const preCreateAsync = (data) => postSchema.parse(data);
 const postCreate = createRemapper({
-    type: null,
-    method: 'POST'
+    type: null
 });
 
 export default {

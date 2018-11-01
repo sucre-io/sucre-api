@@ -5,10 +5,6 @@ export const postSchema = new Schema({
     type: ObjectPart,
     required: false,
     content: {
-      method: {
-          type: StringPart,
-          required: false
-      },
       created_at: {
           type: StringPart,
           required: false

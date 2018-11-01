@@ -21,7 +21,7 @@ export default {
       return fetch('/api/v1/authenticate', postParams);
   }) as TSucreioRequest,
 
-  getAccount(id: string, token: string) {
+  getAccount(id: string, token='') {
       return fetch(`/api/v1/accounts/${id}`, headerTemplate('GET', token));
   },
 

@@ -19,14 +19,18 @@ exports.POST_TEMPLATE = {
     }
 };
 function headerTemplate(mtd, token) {
-    return {
+    if (token === void 0) { token = ''; }
+    var headerBody = {
         method: mtd,
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json;charset=UTF-8',
-            'authorization': "Bearer " + token
+            'Content-Type': 'application/json;charset=UTF-8'
         }
     };
+    if (token) {
+        headerBody.headers['authorization'] = "Bearer " + token;
+    }
+    return headerBody;
 }
 exports.headerTemplate = headerTemplate;
 var key = function (product, version) {
@@ -91,7 +95,7 @@ function wrapSucreioRequest(ScureioConstructor, preRemapAsync, postRemap, callba
             return sucreio.prepareForAPI()
                 .then(postRemap)
                 .then(function (tx) {
-                return callback(__assign({}, headerTemplate(tx.method, token), { body: JSON.stringify(tx) }));
+                return callback(__assign({}, headerTemplate("POST", token), { body: JSON.stringify(tx) }));
             });
         });
     };

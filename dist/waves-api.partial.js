@@ -10043,6 +10043,7 @@ exports.default = {
         return fetch('/api/v1/authenticate', postParams);
     }),
     getAccount: function (id, token) {
+        if (token === void 0) { token = ''; }
         return fetch("/api/v1/accounts/" + id, request_1.headerTemplate('GET', token));
     },
 };
@@ -10096,8 +10097,7 @@ var posts_x_1 = require("./posts.x");
 var fetch = request_1.createFetchWrapper(2 /* SUCREIO */, 0 /* V1 */, request_1.processJSON);
 var preCreateAsync = function (data) { return posts_x_1.postSchema.parse(data); };
 var postCreate = remap_1.createRemapper({
-    type: null,
-    method: 'POST'
+    type: null
 });
 exports.default = {
     createPost: request_1.wrapSucreioRequest(Sucreio_1.default.PostCreation, preCreateAsync, postCreate, function (postParams) {
@@ -10116,10 +10116,6 @@ exports.postSchema = new ts_api_validator_1.Schema({
     type: ts_api_validator_1.ObjectPart,
     required: false,
     content: {
-        method: {
-            type: ts_api_validator_1.StringPart,
-            required: false
-        },
         created_at: {
             type: ts_api_validator_1.StringPart,
             required: false
@@ -14554,14 +14550,18 @@ exports.POST_TEMPLATE = {
     }
 };
 function headerTemplate(mtd, token) {
-    return {
+    if (token === void 0) { token = ''; }
+    var headerBody = {
         method: mtd,
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json;charset=UTF-8',
-            'authorization': "Bearer " + token
+            'Content-Type': 'application/json;charset=UTF-8'
         }
     };
+    if (token) {
+        headerBody.headers['authorization'] = "Bearer " + token;
+    }
+    return headerBody;
 }
 exports.headerTemplate = headerTemplate;
 var key = function (product, version) {
@@ -14626,7 +14626,7 @@ function wrapSucreioRequest(ScureioConstructor, preRemapAsync, postRemap, callba
             return sucreio.prepareForAPI()
                 .then(postRemap)
                 .then(function (tx) {
-                return callback(__assign({}, headerTemplate(tx.method, token), { body: JSON.stringify(tx) }));
+                return callback(__assign({}, headerTemplate("POST", token), { body: JSON.stringify(tx) }));
             });
         });
     };

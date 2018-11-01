@@ -21,12 +21,11 @@ export declare const POST_TEMPLATE: {
         'Content-Type': string;
     };
 };
-export declare function headerTemplate(mtd: any, token: any): {
+export declare function headerTemplate(mtd: any, token?: string): {
     method: any;
     headers: {
         'Accept': string;
         'Content-Type': string;
-        'authorization': string;
     };
 };
 export declare function normalizeHost(host: any): string;
