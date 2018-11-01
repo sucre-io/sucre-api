@@ -17,6 +17,7 @@ exports.default = {
         return fetch('/api/v1/authenticate', postParams);
     }),
     getAccount: function (id, token) {
+        if (token === void 0) { token = ''; }
         return fetch("/api/v1/accounts/" + id, request_1.headerTemplate('GET', token));
     },
 };

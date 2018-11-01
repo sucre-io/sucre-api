@@ -7,8 +7,7 @@ var posts_x_1 = require("./posts.x");
 var fetch = request_1.createFetchWrapper(2 /* SUCREIO */, 0 /* V1 */, request_1.processJSON);
 var preCreateAsync = function (data) { return posts_x_1.postSchema.parse(data); };
 var postCreate = remap_1.createRemapper({
-    type: null,
-    method: 'POST'
+    type: null
 });
 exports.default = {
     createPost: request_1.wrapSucreioRequest(Sucreio_1.default.PostCreation, preCreateAsync, postCreate, function (postParams) {

@@ -28,15 +28,18 @@ export const POST_TEMPLATE = {
   }
 };
 
-export function headerTemplate(mtd, token) {
-  return {
+export function headerTemplate(mtd, token='') {
+  let headerBody = {
     method: mtd,
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json;charset=UTF-8',
-      'authorization': `Bearer ${token}`
+      'Content-Type': 'application/json;charset=UTF-8'
     }
   }
+  if(token){
+    headerBody.headers['authorization'] = `Bearer ${token}`;
+  }
+  return headerBody;
 }
 
 const key = (product, version) => {
@@ -139,7 +142,7 @@ export function wrapSucreioRequest(ScureioConstructor: IScureioClassConstructor,
         .then(postRemap)
         .then((tx) => {
           return callback({
-            ...headerTemplate(tx.method, token),
+            ...headerTemplate("POST", token),
             body: JSON.stringify(tx)
           });
         });
