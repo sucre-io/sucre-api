@@ -150,6 +150,17 @@ export default {
         new StringWithLength('company_name'),
         new StringWithLength('password'),
         new StringWithLength('registration_ip_address')
+    ]),
+
+    PostCreation: createScureioClass(null, [
+        new StringWithLength('created_at'),
+        new StringWithLength('updated_at'),
+        new StringWithLength('postheadline'),
+        new StringWithLength('postbody'),
+        new StringWithLength('shares'),
+        new StringWithLength('message_tags'),
+        new StringWithLength('promotion_status'),
+        new StringWithLength('privacy')
     ])
 
 };

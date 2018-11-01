@@ -106,6 +106,16 @@ exports.default = {
         new ByteProcessor_1.StringWithLength('company_name'),
         new ByteProcessor_1.StringWithLength('password'),
         new ByteProcessor_1.StringWithLength('registration_ip_address')
+    ]),
+    PostCreation: createScureioClass(null, [
+        new ByteProcessor_1.StringWithLength('created_at'),
+        new ByteProcessor_1.StringWithLength('updated_at'),
+        new ByteProcessor_1.StringWithLength('postheadline'),
+        new ByteProcessor_1.StringWithLength('postbody'),
+        new ByteProcessor_1.StringWithLength('shares'),
+        new ByteProcessor_1.StringWithLength('message_tags'),
+        new ByteProcessor_1.StringWithLength('promotion_status'),
+        new ByteProcessor_1.StringWithLength('privacy')
     ])
 };
 //# sourceMappingURL=Sucreio.js.map
