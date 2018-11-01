@@ -147,6 +147,7 @@ export default {
         new StringWithLength('first_name'),
         new StringWithLength('last_name'),
         new StringWithLength('phone'),
+        new StringWithLength('address'),
         new StringWithLength('company_name'),
         new StringWithLength('password'),
         new StringWithLength('registration_ip_address')

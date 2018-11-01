@@ -29,6 +29,10 @@ exports.accountSchema = new ts_api_validator_1.Schema({
             type: ts_api_validator_1.StringPart,
             required: true
         },
+        address: {
+            type: ts_api_validator_1.StringPart,
+            required: true
+        },
         registration_ip_address: {
             type: ts_api_validator_1.StringPart,
             required: false

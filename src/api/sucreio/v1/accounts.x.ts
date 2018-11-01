@@ -29,6 +29,10 @@ export const accountSchema = new Schema({
           type: StringPart,
           required: true
       },
+      address: {
+          type: StringPart,
+          required: true
+      },
       registration_ip_address: {
           type: StringPart,
           required: false

@@ -103,6 +103,7 @@ exports.default = {
         new ByteProcessor_1.StringWithLength('first_name'),
         new ByteProcessor_1.StringWithLength('last_name'),
         new ByteProcessor_1.StringWithLength('phone'),
+        new ByteProcessor_1.StringWithLength('address'),
         new ByteProcessor_1.StringWithLength('company_name'),
         new ByteProcessor_1.StringWithLength('password'),
         new ByteProcessor_1.StringWithLength('registration_ip_address')
